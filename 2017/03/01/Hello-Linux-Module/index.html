@@ -1,93 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-
-  
-  <title>Hello Linux Module | Yanhao&#39;s Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Linux的宏内核架构使得内核的体积越来越大，为了解决这个问题，内核使用了一种模块机制。模块作为内核的可以被动态装入与卸出的组成部分，可以在需要时动态的链接到运行中的内核中，而在不需要时又从内核中卸出。因此模块的使用大大减少了Linux内核的体积。正因为内核模块在运行时是动态链接到当前运行的内核中的，因此模块是内核的一部分，而不是一个独立的程序，模块开发在一定意义上来说就是内核开发。本文不就Lin">
-<meta name="keywords" content="kernel">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Hello Linux Module">
-<meta property="og:url" content="http://blog.yanhao.org/2017/03/01/Hello-Linux-Module/index.html">
-<meta property="og:site_name" content="Yanhao&#39;s Blog">
-<meta property="og:description" content="Linux的宏内核架构使得内核的体积越来越大，为了解决这个问题，内核使用了一种模块机制。模块作为内核的可以被动态装入与卸出的组成部分，可以在需要时动态的链接到运行中的内核中，而在不需要时又从内核中卸出。因此模块的使用大大减少了Linux内核的体积。正因为内核模块在运行时是动态链接到当前运行的内核中的，因此模块是内核的一部分，而不是一个独立的程序，模块开发在一定意义上来说就是内核开发。本文不就Lin">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-22T02:42:04.708Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello Linux Module">
-<meta name="twitter:description" content="Linux的宏内核架构使得内核的体积越来越大，为了解决这个问题，内核使用了一种模块机制。模块作为内核的可以被动态装入与卸出的组成部分，可以在需要时动态的链接到运行中的内核中，而在不需要时又从内核中卸出。因此模块的使用大大减少了Linux内核的体积。正因为内核模块在运行时是动态链接到当前运行的内核中的，因此模块是内核的一部分，而不是一个独立的程序，模块开发在一定意义上来说就是内核开发。本文不就Lin">
-  
-    <link rel="alternate" href="/atom.xml" title="Yanhao&#39;s Blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Yanhao&#39;s Blog</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.yanhao.org"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-Hello-Linux-Module" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/01/Hello-Linux-Module/" class="article-date">
-  <time datetime="2017-03-01T03:00:51.000Z" itemprop="datePublished">2017-03-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Hello Linux Module
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Linux的宏内核架构使得内核的体积越来越大，为了解决这个问题，内核使用了一种模块机制。模块作为内核的可以被动态装入与卸出的组成部分，可以在需要时动态的链接到运行中的内核中，而在不需要时又从内核中卸出。因此模块的使用大大减少了Linux内核的体积。<br>正因为内核模块在运行时是动态链接到当前运行的内核中的，因此模块是内核的一部分，而不是一个独立的程序，模块开发在一定意义上来说就是内核开发。<br>本文不就Linux内核模块的实现机制做介绍，而只是给出内核模块的完整模型描述，然后以一个具体的helloworkd模块来使读者实际感受内核模块的编写，编译和运行。<br><a id="more"></a></p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Hello Linux Module | Yanhao's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Hello Linux Module</h1><a id="logo" href="/.">Yanhao's Blog</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Hello Linux Module</h1><div class="post-meta">Mar 1, 2017</div><a class="disqus-comment-count" data-disqus-identifier="2017/03/01/Hello-Linux-Module/" href="/2017/03/01/Hello-Linux-Module/#disqus_thread"></a><div class="post-content"><p>Linux的宏内核架构使得内核的体积越来越大，为了解决这个问题，内核使用了一种模块机制。模块作为内核的可以被动态装入与卸出的组成部分，可以在需要时动态的链接到运行中的内核中，而在不需要时又从内核中卸出。因此模块的使用大大减少了Linux内核的体积。<br>正因为内核模块在运行时是动态链接到当前运行的内核中的，因此模块是内核的一部分，而不是一个独立的程序，模块开发在一定意义上来说就是内核开发。<br>本文不就Linux内核模块的实现机制做介绍，而只是给出内核模块的完整模型描述，然后以一个具体的helloworkd模块来使读者实际感受内核模块的编写，编译和运行。<br><a id="more"></a></p>
 <p>一个完整的内核模块的编写，应遵循以下规则：<br>首先，内核模块的源文件必须包括linux/module.h头文件。<br>其次，模块需要一个载入函数和一个卸出函数。顾名思义，这两个函数分别在该模块被载入和写出当前内核时执行。这两个函数的默认函原型分别为<code>int init_module(void)</code>和<code>void cleanup_module(void)</code>，你也可以不使用这两个函数名，但是此时要通过函数<code>module_init(/*载入函数名*/)</code>和<code>module_exit(/*卸出函数名*/)</code>来显式指定该模块的卸任卸出函数。<br>接下来我们来看一个简单的内核模块的例子：</p>
 <p>本文的实验环境是ArchLinux，内核版本为13.16.1,是当前内核的最新稳定版<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ uname -a</span><br><span class="line">$ Linux local 3.16.1-1-ARCH #1 SMP PREEMPT Thu Aug 14 07:40:19 CEST 2014 x86_64 GNU/Linux</span><br></pre></td></tr></table></figure></p>
 <p>注：命令前的<code>$</code>表示此条命令是以普通用户身份运行</p>
@@ -103,141 +14,29 @@
 <p>文件编写完成后保存，执行make命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ make</span><br></pre></td></tr></table></figure></p>
 <p>命令执行完成后我们会得到helo.ko文件，这就是我们要的模块文件，执行以下命令可以看到模块的输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo insmod hello.ko</span><br><span class="line">$ sudo rmmod hello.ko</span><br><span class="line">$ dmesg</span><br></pre></td></tr></table></figure></p>
 <p>后记：本文三年前写于三年前，现重新发布在这儿，有些内容或许已经不正确</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.yanhao.org/2017/03/01/Hello-Linux-Module/" data-id="cjg7d0q9y00019wh6imleg156" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kernel/">kernel</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2017/09/21/twoSum/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          towSum
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/02/15/Go中的可变参数/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Go中的可变参数</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kernel/">kernel</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/LeetCode/" style="font-size: 20px;">LeetCode</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/kernel/" style="font-size: 10px;">kernel</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/02/22/apparmor/">apparmor</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/12/Linux系统三权分立/">Linux系统三权分立</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/06/swapPairs/">swapPairs</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/06/mergeKLists/">mergeKLists</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/04/generateParenthesis/">generateParenthesis</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 Yanhao Mo<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
-</body>
-</html>
+</div><div class="tags"><a href="/tags/kernel/">kernel</a></div><div class="post-nav"><a class="pre" href="/2017/09/21/twoSum/">towSum</a><a class="next" href="/2017/02/15/Go中的可变参数/">Go中的可变参数</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论 「请确保 disqus.com 可以正常加载」</button></div><script>var disqus_shortname = 'yanhaoblog';
+var disqus_identifier = '2017/03/01/Hello-Linux-Module/';
+var disqus_title = 'Hello Linux Module';
+var disqus_url = 'http://blog.yanhao.org/2017/03/01/Hello-Linux-Module/';
+$('.btn_click_load').click(function() {
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  $('.btn_click_load').css('display','none');
+});
+$.ajax({
+  url: 'https://disqus.com/next/config.json',
+  timeout: 3000,
+  type: 'GET',
+  success: (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    $('.btn_click_load').css('display','none');
+  })(),
+  error: function() {
+    $('.btn_click_load').css('display','block');
+  }
+});</script><script id="dsq-count-scr" src="//yanhaoblog.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://blog.yanhao.org"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/LeetCode/" style="font-size: 15px;">LeetCode</a> <a href="/tags/kernel/" style="font-size: 15px;">kernel</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/02/22/apparmor/">apparmor</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/12/Linux系统三权分立/">Linux系统三权分立</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/06/swapPairs/">swapPairs</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/06/mergeKLists/">mergeKLists</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/04/generateParenthesis/">generateParenthesis</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/04/mergeTwoLists/">mergeTwoLists</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/04/isValid/">isValid</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/03/letterCombinations/">letterCombinations</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/03/removeNthFromEnd/">removeNthFromEnd</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/01/threeSumClosest/">threeSumClosest</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//yanhaoblog.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://wiki.yanhao.org/" title="Yanhao's Wiki" target="_blank">Yanhao's Wiki</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Yanhao's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
