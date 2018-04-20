@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.yanhao.org/"/>
-  <updated>2018-02-22T02:42:04.708Z</updated>
+  <updated>2018-02-23T15:37:27.830Z</updated>
   <id>http://blog.yanhao.org/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>apparmor</title>
+    <link href="http://blog.yanhao.org/2018/02/22/apparmor/"/>
+    <id>http://blog.yanhao.org/2018/02/22/apparmor/</id>
+    <published>2018-02-22T05:21:11.000Z</published>
+    <updated>2018-02-23T15:37:27.830Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>apparmor是Linux下的一个强制访问控制工具，它包括内核和用户空间两部分。<br>其中内核部分实现强制访问控制功能，而用户空间部分提供用户使用改功能的工具。</p><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>apparmor现在已经默认包含在debian系统（sid版本）中，如果你使用的是其他发行版或者<br>debian的其他版本，需要手动安装</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt update </span><br><span class="line">$ sudo apt install apparmor</span><br></pre></td></tr></table></figure><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>apparmor的工作方式是通过</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;p&gt;apparmor是Linux下的一个强制访问控制工具，它包括内核和用户空间两部分。&lt;br&gt;其中内核部分实现强制访问控制功能，而用户空间部分提
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Linux系统三权分立</title>
@@ -448,29 +469,6 @@
       
       
         &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;There are two sorted arrays nums1 and nums2 of size m and n respective
-      
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="http://blog.yanhao.org/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>lengthOfLongestSubstring</title>
-    <link href="http://blog.yanhao.org/2017/09/21/lengthOfLongestSubstring/"/>
-    <id>http://blog.yanhao.org/2017/09/21/lengthOfLongestSubstring/</id>
-    <published>2017-09-21T14:25:25.000Z</published>
-    <updated>2018-02-22T02:42:04.708Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>Given a string, find the length of the longest substring without repeating characters.</p><h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples:"></a>Examples:</h3><p>Given “abcabcbb”, the answer is “abc”, which the length is 3.<br>Given “bbbbb”, the answer is “b”, with the length of 1.<br>Given “pwwkew”, the answer is “wke”, with the length of 3. Note that the answer must be a substring, “pwke” is a subsequence and not a substring.</p><h1 id="解"><a href="#解" class="headerlink" title="解"></a>解</h1><p>Python<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        i, j = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        m = &#123;&#125;</span><br><span class="line">        length = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i &lt; len(s) <span class="keyword">and</span> j &lt; len(s):</span><br><span class="line">            <span class="keyword">if</span> s[j] <span class="keyword">in</span> m:</span><br><span class="line">                i = max(i, m[s[j]]+<span class="number">1</span>)</span><br><span class="line">            m[s[j]] = j</span><br><span class="line">            length = max(length, j-i+<span class="number">1</span>)</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> length</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;Given a string, find the length of the longest substring without repea
       
     
     </summary>
